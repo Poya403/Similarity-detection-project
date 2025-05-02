@@ -1,0 +1,25 @@
+.prev {
+    /* از چپ وسط چین شود */
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+/* Customize the table */
+table {
+    text-align: center;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;  
+    padding-bottom: 100px; 
+}
+
+td, th, tr {
+    border: 1px solid #dddddd;
+    text-align: center;
+    justify-items: center;
+    padding: 12px;
+}
+/* --------------- */
+/* tr:nth-child(even) {
+    background-color: #dddddd;
+} */
