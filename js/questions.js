@@ -1,8 +1,22 @@
 let curr = 0;
-const qn = document.getElementById('qnumber');//شماره سوال
-const title = document.getElementById('title');//عنوان سوال
+const qn = document.getElementById('qnumber'); //شماره سوال
+const title = document.getElementById('title'); //عنوان سوال
 const next_btn = document.getElementById('next_btn');
-const answerbox = document.getElementById('abox');
+const answerbox = document.getElementById('abox');//متن پاسخ ما
+
+//متغیرهای زمانی 
+let start_time = 0, end_time = 0;
+//ذخیره زمان صرف شده
+window.addEventListener('load', () => {
+    start_time = new Date();
+})
+
+window.addEventListener('beforeunload', () => {
+    end_time = new Date();
+    const time = (end_time - start_time) / 1000
+    localStorage.setItem('timetaken', time);
+});
+// ------------
 const questions = [
     {
         qnumber: 1,
@@ -30,9 +44,9 @@ const questions = [
         correct_answer: null,
     },
 ];
+
 //آرایه ای برای ذخیره پاسخ ها
 const answers = new Array(questions.length).fill('');
-
 // تابع نوشتن سوال
 const qw = () => {
     qn.textContent = "سوال : " + (curr + 1).toString() + " از " + questions.length;
@@ -40,6 +54,7 @@ const qw = () => {
     answerbox.value = answers[curr] || '';
 };
 qw();
+
 // رفتن به سوال بعدی
 next_btn.addEventListener('click', () => {
     answers[curr] = answerbox.value;
@@ -60,10 +75,11 @@ prev_btn.addEventListener('click', () => {
     if (curr > 0) {
         curr--;
     } else {
-       window.location.href = "login.html";
+        window.location.href = "login.html";
     }
     qw();
 });
+
 //ارسال پاسخ های کاربر به همراه اطلاعاتش
 const users = {};
 const submit = () => {

@@ -12,9 +12,14 @@
         <h1>اطلاعات عمومی</h1>
         <h2>موفق و موید باشید</h2>
         <h2>جهت مشاهده نتایج تقلبات روی دکمه نتایج کلی کلیک کنید.</h2>
+        <h2>مقدار زمان صرف شده برحسب ثانیه : <span id="timetaken_html"></span></h2>
         <button id="result_btn">نتایج کلی</button>
         <button id="reset_btn">آزمون مجدد</button>
     </section>
+    <script>
+        let timetaken = localStorage.getItem('timetaken')
+        document.getElementById('timetaken_html').textContent = timetaken;
+    </script>
     <script src="../js/submit.js"></script>
     <script src="../js/themes.js"></script>
 </body>
