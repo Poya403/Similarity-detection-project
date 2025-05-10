@@ -13,12 +13,12 @@
             <button id="theme_btn">حالت تاریک</button>
             <h1>سلام به سایت آزمون خوش آمدید .</h1>
             <h1>اطلاعات عمومی</h1>
-            <h2>توضیحات : سلام دوستان با دقت و حوصله به سوالات لطفا پاسخ بدید</h2>
-            <h2>تعداد سوالات : 5 سوال </h2>
-            <h2>زمان آزمون : 20 دقیقه</h2>
-            <h2>تعداد سوال امتیازی : ندارد</h2>
+            <h2>توضیحات : <span id="exam_description"></span></h2>
+            <h2>تعداد سوالات : <span id="numberofquestions"></span> سوال </h2>
+            <h2>زمان آزمون : <span id="exam_time"></span> دقیقه</h2>
+            <h2>تعداد سوال امتیازی : <span id="numberofpoints_questions"></span></h2>
         </section>
-        <section class="info">
+        <section class="info"><span></span>
             <form id="info-form">
                 <h1 id="info_title">اطلاعات خود را وارد کنید:</h1>
         
@@ -33,5 +33,6 @@
     </div>
     <script src="../js/themes.js"></script>
     <script src="../js/login.js"></script>
+    <script src="../js/exam_info.js"></script>
 </body>
 </html>

@@ -6,18 +6,20 @@
 }
 /* Customize the table */
 table {
-    text-align: center;
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;  
-    padding-bottom: 100px; 
 }
 
-td, th, tr {
+th,td,tr{
     border: 1px solid #dddddd;
     text-align: center;
-    justify-items: center;
+    vertical-align: middle;
     padding: 12px;
+}
+
+table td:first-child, table th:first-child {
+    text-align: center;
 }
 /* --------------- */
 /* tr:nth-child(even) {
