@@ -6,8 +6,8 @@ from flask_cors import CORS
 app = Flask(__name__)
 
 CORS(app) # اجازه دسترسی از frontend (Live Server) به API
-# بارگذاری مدل
-model = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
+# بارگذاری مدل زبانی
+model = SentenceTransformer('distiluse-base-multilingual-cased-v1')
 
 @app.route('/qbox.html', methods=['POST'])
 def calculate_similarity():
@@ -28,7 +28,29 @@ def calculate_similarity():
 
             for answer1, answer2 in zip(users[user1_name], users[user2_name]):
             # محاسبه شباهت
-                embeddings = model.encode([answer1['description'], answer2['description']])
+                desc1 = str(answer1['description'] or "").strip()
+                desc2 = str(answer2['description'] or "").strip()
+
+                #محاسبه اختلاف زمانی
+                t1 = answer1.get('time_taken',0)
+                t2 = answer2.get('time_taken',0)
+                time_diff = abs(t1 - t2)
+
+                if not desc1 or not desc2:
+                    results.append({
+                        "user1_name": user1_name,
+                        "user2_name": user2_name,
+                        "question_number": answer1['qnumber'],
+                        "answer1": desc1,
+                        "answer2": desc2,
+                        "time1": t1,
+                        "time2": t2,
+                        "time_diff": time_diff,
+                        "similarity_percentage": 0.0,  # تبدیل به درصد
+                    })
+                    continue
+
+                embeddings = model.encode([desc1,desc2])
                 similarity = util.cos_sim(embeddings[0], embeddings[1])
 
                 # ذخیره نتیجه
@@ -36,8 +58,11 @@ def calculate_similarity():
                     "user1_name": user1_name,
                     "user2_name": user2_name,
                     "question_number": answer1['qnumber'],
-                    "answer1": answer1['description'],
-                    "answer2": answer2['description'],
+                    "answer1": desc1,
+                    "answer2": desc2,
+                    "time1": t1,
+                    "time2": t2,
+                    "time_diff": time_diff,
                     "similarity_percentage": float(similarity.item()) * 100  # تبدیل به درصد
                 })
 

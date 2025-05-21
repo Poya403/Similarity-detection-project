@@ -11,6 +11,9 @@ fetch("http://127.0.0.1:5000/results.html")
           <th>شماره سوال</th>
           <th>جواب کاربر اول</th>
           <th>جواب کاربر دوم</th>
+          <th>زمان صرف شده کاربر اول</th>
+          <th>زمان صرف شده کاربر دوم</th>
+          <th>تفاوت زمانی</th>
           <th>درصد شباهت</th>
         </tr>
       </thead>
@@ -18,12 +21,16 @@ fetch("http://127.0.0.1:5000/results.html")
     `;
     data.forEach(r => {
       const row = document.createElement("tr");
-      row.innerHTML = `${r.user1_name}</td><td>
-        ${r.user2_name}</td><td>
-        ${r.question_number}</td><td>
-        ${r.answer1}</td><td>
-        ${r.answer2}</td><td>
-        ${r.similarity_percentage.toFixed(2)}%</td>`;
+      row.innerHTML = `
+        <td>${r.user1_name}</td>
+        <td>${r.user2_name}</td>
+        <td>${r.question_number}</td>
+        <td>${r.answer1}</td>
+        <td>${r.answer2}</td>
+        <td>${r.time1}</td>
+        <td>${r.time2}</td>
+        <td>${r.time_diff}</td>
+        <td>${r.similarity_percentage.toFixed(2)}%</td>`;
       table.appendChild(row);
     });
   });

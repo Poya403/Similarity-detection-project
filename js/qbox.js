@@ -1,23 +1,24 @@
 let curr = 0;
 const qn = document.getElementById('qnumber'); //شماره سوال
 const title = document.getElementById('title'); //عنوان سوال
-const next_btn = document.getElementById('next_btn');
+const next_btn = document.getElementById('next_btn');//المان دکمه بعدی
 const answerbox = document.getElementById('abox');//متن پاسخ ما
 
 //متغیرهای زمانی 
 let start_time = 0, end_time = 0;
+const total_times = new Array(questions.length).fill(0);
 
-//ذخیره زمان صرف شده
+//شروع ثبت زمان موقعی که صفحه لود شد
 window.addEventListener('load', () => {
     start_time = new Date();
 })
 
-window.addEventListener('beforeunload', () => {
+//ذخیره زمان صرف شده برای سوالی که جواب دادیم و میخواهیم برویم سوال بعدی
+const save_time_taken = () => {
     end_time = new Date();
-    const total_time = (end_time - start_time) / 1000
-    localStorage.setItem('timetaken', total_time);
-});
-//-----
+    total_times[curr] = ((end_time - start_time) / 1000) + total_times[curr];
+    start_time = new Date();
+}
 
 //آرایه ای برای ذخیره پاسخ ها
 const answers = new Array(questions.length).fill('');
@@ -32,12 +33,14 @@ qw();
 // رفتن به سوال بعدی
 next_btn.addEventListener('click', () => {
     answers[curr] = answerbox.value;
+    save_time_taken();
     if (curr < questions.length - 1) {
         curr++;
         next_btn.textContent = "بعدی";
     } else {
         next_btn.textContent = "ثبت پاسخ";
         submit();
+        sendAllUserDataToFlask();
         window.location.href = "Thanks_page.html";
     }
     qw();
@@ -46,7 +49,11 @@ next_btn.addEventListener('click', () => {
 //رفتن به سوال قبلی
 prev_btn.addEventListener('click', () => {
     answers[curr] = answerbox.value;
+    save_time_taken();
     if (curr > 0) {
+        end_time = new Date();
+        total_times[curr] = ((end_time - start_time) / 1000) + total_times[curr];
+        start_time = new Date();
         curr--;
     } else {
         window.location.href = "login.html";
@@ -66,7 +73,7 @@ const submit = () => {
         const answer = {
             qnumber: i + 1,
             description: answers[i],
-            time_taken: 30,
+            time_taken: total_times[i],
         }
         users[UserInfo.name].push(answer);
     }
