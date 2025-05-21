@@ -1,4 +1,4 @@
-This is a simple site for taking a test. On this site, users take the test and submit their answers. In the results.html file, we show the similarity detection results. Users' answers must be in English.
+This is a simple site for taking a test. On this site, users take the test and submit their answers. In the results.html file, we show the similarity detection results.
 Steps to run the project:
 Go to Similarity-detection-project repository in my profile and download the project folder
 1.Run the main.py file in the cmd or vscode terminal in the project directory.
