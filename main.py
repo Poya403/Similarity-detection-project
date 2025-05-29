@@ -1,7 +1,8 @@
 from flask import Flask, request, jsonify
-import json
+import json,os
 from sentence_transformers import SentenceTransformer, util
 from flask_cors import CORS
+import requests
 
 app = Flask(__name__)
 
@@ -72,7 +73,7 @@ def calculate_similarity():
 
     return jsonify(results)
 
-@app.route('/results.html' , methods=['GET'])
+@app.route('/results' , methods=['GET'])
 
 def get_results():
     try:
@@ -82,5 +83,29 @@ def get_results():
     except FileNotFoundError:
         return jsonify([])
 
+@app.route('/save_user', methods=['POST'])
+def save_user_data():
+    user_data = request.get_json()
+
+    # اگر فایل test.json وجود ندارد، بسازش
+    if not os.path.exists('test.json'):
+        with open('test.json', 'w', encoding='utf-8') as f:
+            json.dump({}, f)
+
+    # خواندن اطلاعات قبلی
+    with open('test.json', 'r', encoding='utf-8') as f:
+        all_users = json.load(f)
+
+    # ترکیب اطلاعات قبلی با داده جدید
+    all_users.update(user_data)
+
+    # ذخیره به‌روزرسانی‌شده در فایل
+    with open('test.json', 'w', encoding='utf-8') as f:
+        json.dump(all_users, f, ensure_ascii=False, indent=2)
+
+    response = requests.post('http://127.0.0.1:5000/qbox.html', json = {"users": all_users}, proxies={"http": None , "https": None})
+    
+    return jsonify({"message": "User data saved successfully."})
+  
 if __name__ == '__main__':
     app.run(debug=True)

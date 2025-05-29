@@ -4,24 +4,45 @@
     left: 50%;
     transform: translate(-50%, 0);
 }
-/* Customize the table */
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;  
+.container{
+    border: 1px solid ;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
 }
 
-th,td,tr{
-    border: 1px solid #dddddd;
-    text-align: center;
-    vertical-align: middle;
-    padding: 12px;
+button.sort-btn{
+    background-color: transparent;
+    color: black;
+}
+.dark-theme button.sort-btn{
+    background-color: transparent;
+    color: white;
 }
 
-table td:first-child, table th:first-child {
-    text-align: center;
+button.sort-btn.active {
+  color: #2196f3;
+  font-weight: bold;
+  font-size: 14px;
+  transition: all 0.2s;
 }
-/* --------------- */
-/* tr:nth-child(even) {
-    background-color: #dddddd;
-} */
+
+
+.icon i {
+  font-size: 15px;      /* اندازه آیکون */
+  vertical-align: middle;
+}
+
+p{
+    display: flex;
+    align-items: center; /*  آیکون و متن هم‌ارتفاع می‌شن */
+    gap: 6px;             /* فاصله بین آیکون و متن */
+}
+
+input#percent_filter_el{
+    background-color: whitesmoke;
+    padding: 5px;
+    width: 5%;
+    border: none;
+}
+

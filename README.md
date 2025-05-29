@@ -1,7 +1,10 @@
-This is a simple site for taking a test. On this site, users take the test and submit their answers. In the results.html file, we show the similarity detection results.
-Steps to run the project:
-Go to Similarity-detection-project repository in my profile and download the project folder
-1.Run the main.py file in the cmd or vscode terminal in the project directory.
+این یک سایت ساده برای انجام آزمون است.
+در این سایت، کاربران در آزمون شرکت می‌کنند و پاسخ‌های خود را ارسال می‌کنند.
+و در این پروژه  پاسخ‌های کاربران تجزیه و تحلیل می شود و موارد مشکوک به تقلب شناسایی میشود.
+در فایل results.html، نتایج تشخیص شباهت را نشان می‌دهیم.
+
+مراحل اجرای پروژه
+1.Run the main.py file in the terminal.
 Wait until the following message is displayed in the terminal
     * Flask application service "main"
     * Debug mode: On
@@ -12,5 +15,24 @@ Wait until the following message is displayed in the terminal
     * Debugger is enabled!
     * Debugger pin: 322-392-249
     
-2.Then open a new terminal and run the Send_request.py file.
-Go to the folder templates and click the login.html file.
+2.فایل login.html را در مرورگر باز کنید.
+
+### رابط کاربری
+طراحی رابط کاربری مدرن و واکنش‌گرا
+پشتیبانی از حالت تاریک و روشن
+نشانگر پیشرفت آزمون در زمان واقعی
+سیستم ذخیره خودکار پاسخ‌ها
+امکان علامت‌گذاری سوالات برای بررسی مجدد
+
+### سیستم تشخیص تقلب
+تحلیل شباهت پاسخ‌ها
+شناسایی الگوهای مشکوک
+نمایش جفت‌های مشکوک به تقلب
+امتیازدهی به میزان شباهت
+خروجی استاندارد نتایج تحلیل
+قابلیت فیلتر کردن داده های نتایج و مرتب سازی آنها بر اساس اسامی کاربران و شماره سوال و درصد شباهت 
+
+### ویژگی های امتیازی:
+مدل زبانی سریع و دقیق و دارای قابلیت پشتیبانی از زبان فارسی و انگلیسی
+رابط کاربری از راست به چپ (RTL) پشتیبانی می کند
+

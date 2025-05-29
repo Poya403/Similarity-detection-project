@@ -37,13 +37,13 @@ next_btn.addEventListener('click', () => {
     if (curr < questions.length - 1) {
         curr++;
         next_btn.textContent = "بعدی";
+        if(curr === questions.length - 1) next_btn.textContent = "ثبت پاسخ";
     } else {
-        next_btn.textContent = "ثبت پاسخ";
         submit();
-        sendAllUserDataToFlask();
         window.location.href = "Thanks_page.html";
     }
     qw();
+    renderPagination();
 });
 
 //رفتن به سوال قبلی
@@ -51,19 +51,40 @@ prev_btn.addEventListener('click', () => {
     answers[curr] = answerbox.value;
     save_time_taken();
     if (curr > 0) {
-        end_time = new Date();
-        total_times[curr] = ((end_time - start_time) / 1000) + total_times[curr];
-        start_time = new Date();
+        next_btn.textContent = "بعدی";
         curr--;
     } else {
         window.location.href = "login.html";
     }
     qw();
+    renderPagination();
 });
+
+const renderPagination = () => {
+    const pagination = document.getElementById("pagination");
+    pagination.innerHTML = "";
+
+    for (let i = 1; i <= questions.length; i++) {
+      const btn = document.createElement("button");
+      btn.textContent = i;
+      btn.classList.toggle("active", i-1 === curr);
+
+      btn.addEventListener("click", () => {
+        save_time_taken();
+        curr = i-1;
+        if(curr === questions.length - 1) next_btn.textContent = "ثبت پاسخ"; else next_btn.textContent = "بعدی";
+        qw();
+        renderPagination();
+      });
+
+      pagination.appendChild(btn);
+    }
+  }
+  renderPagination();
 
 //ارسال پاسخ های کاربر به همراه اطلاعاتش
 const users = {};
-const submit = () => {
+const submit = async() => {
     const UserInfo = JSON.parse(localStorage.getItem('userInfo'));
     //اگر کاربر وجود ندارد یک آرایه برای او ایجاد میکنیم
     if (!users[UserInfo.name]) {
@@ -77,6 +98,18 @@ const submit = () => {
         }
         users[UserInfo.name].push(answer);
     }
-    console.log(users[UserInfo.name]);
     localStorage.setItem('users', JSON.stringify(users));
+    
+    // ارسال به سرور Flask
+    const response = await fetch("http://127.0.0.1:5000/save_user", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(users)
+    });
+
+    const result = await response.json();
+    console.log("✅ وضعیت ذخیره:", result.message);
 }
+

@@ -6,15 +6,25 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/results.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body dir="rtl">
     <section class="description">
         <button id="theme_btn">حالت تاریک</button>
-        <h1>نتایج کلی آزمون:  </h1>
+        <h1>نتایج شباهت بین کاربران:  </h1>
     </section>
-    <section class="info" dir="ltr">
-        <h1 dir="rtl">نتایج شباهت بین کاربران</h1>
-        <table id="resultsTable"></table>
+    <section class="info" dir="rtl">
+        <h1>شباهت بالای یا برابر: % <input id="percent_filter_el" type="number"></input></h1>
+        <div class="sort-controls">
+            <p><i class="material-icons">sort</i> مرتب‌سازی بر اساس:
+            <button class="sort-btn qnumber">شماره سوال</button>
+            <button class="sort-btn name">اسامی</button>
+            <button class="sort-btn similarity">درصد شباهت</button>
+            </p>
+        </div>
+
+        <div dir="rtl" id="resultsdiv"></div>
+        <!-- <table id="resultsTable"></table> -->
     </section>
     <button class="prev">صفحه قبلی</button>
     <script src="../js/results.js"></script>
