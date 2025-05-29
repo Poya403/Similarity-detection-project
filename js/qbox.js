@@ -3,7 +3,7 @@ const qn = document.getElementById('qnumber'); //شماره سوال
 const title = document.getElementById('title'); //عنوان سوال
 const next_btn = document.getElementById('next_btn');//المان دکمه بعدی
 const answerbox = document.getElementById('abox');//متن پاسخ ما
-
+const pagination = document.getElementById("pagination");//المان نمایش پیشرفت جواب دادن سوالات
 //متغیرهای زمانی 
 let start_time = 0, end_time = 0;
 const total_times = new Array(questions.length).fill(0);
@@ -54,20 +54,27 @@ prev_btn.addEventListener('click', () => {
         next_btn.textContent = "بعدی";
         curr--;
     } else {
-        window.location.href = "login.html";
+        curr=0;
     }
     qw();
     renderPagination();
 });
 
+let signFlag = new Array(questions.length).fill(false);
+const sign_btn = document.getElementById("sign_btn");
+
 const renderPagination = () => {
-    const pagination = document.getElementById("pagination");
     pagination.innerHTML = "";
 
     for (let i = 1; i <= questions.length; i++) {
       const btn = document.createElement("button");
       btn.textContent = i;
-      btn.classList.toggle("active", i-1 === curr);
+      btn.classList.toggle("active", i-1 == curr);
+      btn.classList.toggle("navigated", i-1 <= curr);
+      signFlag[curr] ? sign_btn.textContent = "برداشتن علامت" : sign_btn.textContent = "علامت زدن";
+
+      if(signFlag[i-1]) btn.classList.toggle("highlight", signFlag[i-1]);//اگه پرچم بالا بود سوال را علامت بزن
+      else btn.classList.remove("highlight", i-1);
 
       btn.addEventListener("click", () => {
         save_time_taken();
@@ -82,6 +89,16 @@ const renderPagination = () => {
   }
   renderPagination();
 
+sign_btn.addEventListener('click',() => {
+    if(!signFlag[curr] || answers[curr]){
+        signFlag[curr] = true;
+        sign_btn.textContent = "برداشتن علامت";
+    }else{
+        signFlag[curr] = false;
+        sign_btn.textContent = "علامت زدن";
+    }
+    renderPagination();
+})
 //ارسال پاسخ های کاربر به همراه اطلاعاتش
 const users = {};
 const submit = async() => {

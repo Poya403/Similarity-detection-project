@@ -2,22 +2,30 @@
   display: flex;
   justify-content: center;
   gap: 8px;
-  margin: 3px 0;
   flex-wrap: wrap;
 }
 
 .pagination button {
-  padding: 6px 12px;
+  padding: 6px 10px;
   border: none;
   color: blue;
   background-color: whitesmoke;
-  border-radius: 20px;
+  border-radius: 15px;
   cursor: pointer;
   font-size: 14px;
 }
 
 .pagination button.active {
+  font-weight: bold;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), -2px -2px 5px rgba(255,255,255,0.2);
+}
+
+.pagination button.navigated {
   background-color: blue;
   color: white;
-  font-weight: bold;
+}
+
+.pagination button.highlight {
+  background-color: orangered;
+  color: white;
 }

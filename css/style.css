@@ -74,6 +74,11 @@ button:hover {
     background-color: aliceblue;
 }
 
+#sign_btn{
+    color: white;
+    background-color: orangered;
+}
+
 .dark-theme {
     background-color: rgb(70, 63, 63);
     color: white;
@@ -90,4 +95,3 @@ button:hover {
 .dark-theme .info {
     background-color: gray;
 }
-
