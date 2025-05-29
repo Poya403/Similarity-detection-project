@@ -6,7 +6,7 @@
 }
 
 .pagination button {
-  padding: 6px 10px;
+  padding: 6px 12px;
   border: none;
   color: blue;
   background-color: whitesmoke;
@@ -17,7 +17,7 @@
 
 .pagination button.active {
   font-weight: bold;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), -2px -2px 5px rgba(255,255,255,0.2);
+  padding: 12px 17px;
 }
 
 .pagination button.navigated {
