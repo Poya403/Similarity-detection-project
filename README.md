@@ -15,7 +15,7 @@ Wait until the following message is displayed in the terminal
     * Debugger is enabled!
     * Debugger pin: 322-392-249
     
-2.فایل login.html را در مرورگر باز کنید. ###
+### 2.فایل login.html را در مرورگر باز کنید.
 
 ### رابط کاربری
 طراحی رابط کاربری مدرن و واکنش‌گرا
