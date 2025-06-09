@@ -4,7 +4,7 @@
 در فایل results.html، نتایج تشخیص شباهت را نشان می‌دهیم.
 
 مراحل اجرای پروژه
-1.Run the main.py file in the terminal.
+###1.Run the main.py file in the terminal.
 Wait until the following message is displayed in the terminal
     * Flask application service "main"
     * Debug mode: On
@@ -15,7 +15,7 @@ Wait until the following message is displayed in the terminal
     * Debugger is enabled!
     * Debugger pin: 322-392-249
     
-2.فایل login.html را در مرورگر باز کنید.
+2.فایل login.html را در مرورگر باز کنید.###
 
 ### رابط کاربری
 طراحی رابط کاربری مدرن و واکنش‌گرا
