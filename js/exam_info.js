@@ -20,7 +20,7 @@ const questions = [
     },
     {
         qnumber: 3,
-        title: "از نظر شما برای طراحی یک وبسایت خوب چه زبانها و فریم ورک هایی برای برنامه نویسی ضروری است؟ ",
+        title:"برای طراحی و توسعه یک وب‌سایت حرفه‌ای، چه زبان‌های برنامه‌نویسی و فریم‌ورک‌هایی را پیشنهاد می‌دهید و چرا؟",
         correct_answer: null,
     },
 ];
@@ -31,5 +31,5 @@ if(exam_description != null) exam_description.textContent = 'سلام خدمت �
 numberofquestions.textContent = questions.length;
 exam_time.textContent = questions.length * 3;
 numberofpoints_questions.textContent = 0;
-if(username != null) username.textContent = userInfo.name;
+if(username != null) username.textContent = "کاربر : " + userInfo.name;
 if(numberofpoints_questions.textContent == 0) { numberofpoints_questions.textContent = 'ندارد'}

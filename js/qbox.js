@@ -54,7 +54,7 @@ const answers = new Array(questions.length).fill('');
 // تابع نوشتن سوال
 const qw = () => {
     qn.textContent = "سوال : " + (curr + 1).toString() + " از " + questions.length;
-    title.textContent = "سوال : " + questions[curr].title;
+    title.textContent = questions[curr].title;
     answerbox.value = answers[curr] || '';
 };
 qw();

@@ -1,23 +1,26 @@
 .pagination {
   display: flex;
   justify-content: center;
-  gap: 8px;
+  gap: 5px;
   flex-wrap: wrap;
 }
 
 .pagination button {
-  padding: 6px 12px;
+  width: 30px;
+  height: 30px;
+  padding: 6px 6px;
   border: none;
   color: blue;
   background-color: whitesmoke;
-  border-radius: 15px;
+  border-radius: 30px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .pagination button.active {
   font-weight: bold;
-  padding: 12px 17px;
+  padding: 6px 6px;
+  font-size: 14px;
 }
 
 .pagination button.navigated {
@@ -28,4 +31,9 @@
 .pagination button.highlight {
   background-color: orangered;
   color: white;
+}
+
+#sign_btn{
+    color: white;
+    background-color: orangered;
 }

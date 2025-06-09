@@ -13,20 +13,18 @@
         <section class="description">
             <button id="theme_btn">حالت تاریک</button>
             <h1>اطلاعات عمومی</h1>
-            <h1 id="username"></h1>
+            <h2 id="username"></h2>
             <h2>تعداد سوالات : <span id="numberofquestions"></span> سوال </h2>
             <h2>زمان آزمون : <span id="exam_time"></span> دقیقه</h2>
             <h2>تعداد سوال امتیازی : <span id="numberofpoints_questions"></span></h2>
         </section>
-        <section class="timerDisplay">
-            <h2>زمان باقیمانده : <span id="timerEl" dir="ltr"></span></h2>
-        </section>
-        <section class="info">
+
+        <section class="question-section">
+            <div class="timerDisplay"><h2>زمان باقیمانده : <span id="timerEl" dir="ltr"></span></h2></div>
             <form id="info-form">
                 <h1 id="qnumber">سوال :</h1>
-                <h2 id="title">عنوان سوال</h2>
-                <label for="abox">جواب شما :</label><br><br>
-                <textarea rows="15" id="abox" name="abox"></textarea><br><br>
+                <h2 id="title">عنوان سوال:</h2>
+                <textarea rows="12" id="abox" name="abox" placeholder="جواب خود را در این کادر بنویسید."></textarea><br><br>
             </form>
             <div id="pagination" class="pagination"></div>
             <button id="next_btn">بعدی</button>
