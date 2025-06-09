@@ -106,6 +106,7 @@ const renderPagination = () => {
         else btn.classList.remove("highlight", i - 1);
 
         btn.addEventListener("click", () => {
+            answers[curr] = answerbox.value;
             save_time_taken();
             curr = i - 1;
             if (curr === questions.length - 1) next_btn.textContent = "ثبت پاسخ"; else next_btn.textContent = "بعدی";
