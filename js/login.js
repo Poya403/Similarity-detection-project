@@ -15,6 +15,7 @@ document.getElementById('submit_btn').addEventListener('click', function (event)
        localStorage.setItem('userInfo', JSON.stringify(userInfo));
         //تنظیم حالت پرچم به درحال امتحان دادن
         sessionStorage.setItem('isTakingExam', 'true');
+        localStorage.setItem("examStart", Date.now());
         //رفتن به صفحه سوالات
         window.location.href = 'qbox.html';
     }else{
