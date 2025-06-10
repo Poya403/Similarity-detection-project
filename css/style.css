@@ -29,7 +29,11 @@ h2 {
     border-top: 5px solid blue;
 }
 
-.info,.question-section:hover {
+.info:hover{
+    border-right: 2px solid blue;
+}
+
+.question-section:hover {
     border-right: 2px solid blue;
 }
 

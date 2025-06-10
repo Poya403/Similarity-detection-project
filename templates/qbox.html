@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/pagination.css">
+    <link rel="stylesheet" href="../css/progress container.css">
 </head>
 <body dir="rtl">
     <div class="titles">
@@ -26,6 +27,10 @@
                 <h2 id="title">عنوان سوال:</h2>
                 <textarea rows="12" id="abox" name="abox" placeholder="جواب خود را در این کادر بنویسید."></textarea><br><br>
             </form>
+             <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <p class="progress-text"><span id="progressPercent">0%</span></p>
             <div id="pagination" class="pagination"></div>
             <button id="next_btn">بعدی</button>
             <button id="prev_btn">قبلی</button>

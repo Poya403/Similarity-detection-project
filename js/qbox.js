@@ -42,6 +42,13 @@ const timerDisplay = (remaining) => {
 
     timerEl.textContent = `${min ?? "00"} : ${sec ?? "00"}`;
 }
+//تابع تنظیم گر نمایشگر پیشرفت آزمون
+const updateProgressBar = () => {
+  const percent = Math.round((curr + 1) / questions.length * 100);
+  document.getElementById("progressBar").style.width = percent + "%";
+  document.getElementById("progressPercent").textContent = percent + "%";
+}
+
 //ذخیره زمان صرف شده برای سوالی که جواب دادیم و میخواهیم برویم سوال بعدی
 const save_time_taken = () => {
     end_time = new Date();
@@ -65,6 +72,7 @@ next_btn.addEventListener('click', () => {
     save_time_taken();
     if (curr < questions.length - 1) {
         curr++;
+        updateProgressBar();
         next_btn.textContent = "بعدی";
         if (curr === questions.length - 1) next_btn.textContent = "ثبت پاسخ";
     } else {
@@ -82,6 +90,7 @@ prev_btn.addEventListener('click', () => {
     if (curr > 0) {
         next_btn.textContent = "بعدی";
         curr--;
+        updateProgressBar();
     } else {
         curr = 0;
     }
@@ -109,6 +118,7 @@ const renderPagination = () => {
             answers[curr] = answerbox.value;
             save_time_taken();
             curr = i - 1;
+            updateProgressBar();
             if (curr === questions.length - 1) next_btn.textContent = "ثبت پاسخ"; else next_btn.textContent = "بعدی";
             qw();
             renderPagination();
