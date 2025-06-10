@@ -219,5 +219,22 @@
       "description": "HTML is used for creating web pages.",
       "time_taken": 30
     }
+  ],
+  "Poya Amini": [
+    {
+      "qnumber": 1,
+      "description": "Artificial intelligence is the simulation of human intelligence in machines.",
+      "time_taken": 23.407
+    },
+    {
+      "qnumber": 2,
+      "description": "",
+      "time_taken": 0.394
+    },
+    {
+      "qnumber": 3,
+      "description": "",
+      "time_taken": 0.913
+    }
   ]
 }
